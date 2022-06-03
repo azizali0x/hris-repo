@@ -1,0 +1,60 @@
+<div class="container">
+  <form [formGroup]="addGoal" (submit)="sendGoal()">
+    <mat-form-field appearance="standard">
+      <mat-label> Goal</mat-label>
+      <mat-error>this is required</mat-error>
+      <input type="text" formControlName="goal" required name="goal" matInput placeholder="performance goal">
+  </mat-form-field><br>
+  <mat-form-field appearance="standard">
+    <mat-label>Goal type</mat-label>
+    <mat-error>this is required</mat-error>
+    <mat-select required #goalType formControlName="goalType"  name="type of goal">
+        <mat-option value="personal">personal</mat-option>
+        <mat-option value="performance">performance</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="standard" *ngIf="goalType.value == 'performance'">
+      <mat-label>Key performance Measure</mat-label>
+      <mat-error>this is required</mat-error>
+      <input type="text" formControlName="keyMeasure" required name="key_measure" matInput placeholder="key performance measure">
+  </mat-form-field><br>
+  <mat-form-field appearance="standard" *ngIf="goalType.value == 'personal'">
+    <mat-label>Activity to achieve goal</mat-label>
+    <mat-error>this is required</mat-error>
+    <input type="text" formControlName="goalActivity" required name="goalActivity" matInput placeholder="key performance measure">
+  </mat-form-field><br>
+  <mat-form-field appearance="standard" *ngIf="goalType.value == 'personal'">
+      <mat-label>Manager Support</mat-label>
+      <mat-error>this is required</mat-error>
+      <input type="text" formControlName="managerSupport" required name="managerSupport" matInput placeholder="key performance measure">
+  </mat-form-field><br>
+
+  <mat-form-field appearance="standard">
+      <mat-label>job Holder's comment</mat-label>
+      <mat-error>this is required</mat-error>
+      <textarea matInput formControlName="comment"  required placeholder="description" name="description"></textarea>
+      <!-- <input type="text" required name="description" formControlName="description" matInput placeholder="description"> -->
+  </mat-form-field><br>
+  <mat-form-field appearance="standard">
+    <mat-label>score</mat-label>
+    <mat-error>this is required</mat-error>
+    <mat-select formControlName="score" required name="rating">
+        <!-- this is base on classlist -->
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+        <mat-option value="5">5</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>rating</mat-label>
+    <mat-error>this is required</mat-error>
+    <input type="text" formControlName="rating" required name="rating" matInput placeholder="rating">
+  </mat-form-field>
+  <br>
+  <br>
+  <button type="submit">add</button>
+  </form>
+</div>
